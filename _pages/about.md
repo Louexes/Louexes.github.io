@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-![Image of Robot](/images/DALL·E%202024-02-05%2018.56.33%20-%20Illustrate%20a%20meme%20featuring%20a%20cartoonish%20robot%20with%20an%20expression%20of%20relief%20on%20its%20face.%20The%20robot,%20designed%20with%20a%20futuristic%20yet%20friendly%20appearance%20copy.jpg){: .align-right width = "300px"}
+![Image of Robot](/images/DALL·E%202024-02-05%2018.56.33%20-%20Illustrate%20a%20meme%20featuring%20a%20cartoonish%20robot%20with%20an%20expression%20of%20relief%20on%20its%20face.%20The%20robot,%20designed%20with%20a%20futuristic%20yet%20friendly%20appearance%20copy.jpg){: .align-right width = "100px"}
 
 👨🏻‍💻 I'm currently a final year student in Econometrics and Data Science at the University of Amsterdam
 
