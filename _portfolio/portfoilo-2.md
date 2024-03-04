@@ -745,7 +745,7 @@ plt.show()
 
 
     
-![png](/images/output_39_0%2021.24.45.png)
+![png](/images/output_39_0.png)
     
 
 
