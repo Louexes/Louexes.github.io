@@ -49,8 +49,6 @@ Mathematically the $(1-\alpha )$ quantile of a list of real numbers say $s_{1},.
 
 $$\inf\big\{q\in\mathbb{R}:\frac{1}{B}\sum_{b=1}^B \mathbb{1}_{\{s_b\leq q\}}\geq 1-\alpha\big\}$$
 
-where $\mathbb{1}_{ \{ s_b \leq q \} }$ is an indicator function that is 1 when the value $s_{B}$ is below the quantile value $q$.
-
 Why revisit quantiles? We will using them as the building block for our prediction band $\hat{C}_{n}$ for Conformal Prediction.
 
 ### Defining a simple one sided prediction interval 
@@ -90,7 +88,7 @@ An important requirement for CP is that $y_1,\ldots,y_{n+1}$ are exchangeable. T
 
 $$\big(Y_1,\ldots,Y_{n+1}\big)\stackrel{d}{=} \big(Y_{\sigma(1)},\ldots,Y_{\sigma(n+1)}\big), \;\text{for all permutations } \sigma$$
 
-This is important for upholding the realiability of prediction intervals as the sequence in which data is observed is irrelevant. Exchangeability also means that CP generalizes well to new data, which is something we always welcome in the world of ML!
+This is important for upholding the realiability of prediction intervals as the sequence in which data is observed is irrelevant. Exchangeability also means that CP generalizes well to new data, which is important for evaluating test data sets.
 
 ### Applications to Regression Models
 <hr style="border:2px solid gray">
@@ -201,7 +199,11 @@ This loss function ensures a robustness to outliers in response measurements as 
 
 1. Identify heuristic notion of uncertainty and train model on training set $\mathcal{D}_{1}$. 
 
-With quantile regression our uncertainty is estimating the true quantile $t_{\gamma}(x)$ using estimates $\hat{t}_{\gamma}(x)$ which are often found to be inaccurate due to noise or over/under- regularization in finite samples.  By applying conformal calibration we take this heuristic notion of uncertainty and turn it into a formal and more precise notion of uncertainty. Say we want to achieve a $1-\alpha$ coverage of the data, our selected error rate would be $\alpha$.  We  would want to fit two models for the quantiles $\hat{t}_{\frac{\alpha}{2}}(x)$ and $\hat{t}_{1-\frac{\alpha}{2}}(x)$ using our training set $\mathcal{D}_{1}$.
+With quantile regression our uncertainty is estimating the true quantile $t_{\gamma}(x)$ using estimates $\hat{t}_{\gamma}(x)$ which are often found to be inaccurate due to noise or over/under regularization in finite samples. 
+
+By applying conformal calibration we take this heuristic notion of uncertainty and turn it into a formal and more precise notion of uncertainty. Say we want to achieve a $1-\alpha$ coverage of the data, our selected error rate would be $\alpha$.  
+
+We  would want to fit two models for the quantiles $\hat{t}_{\frac{\alpha}{2}}(x)$ and $\hat{t}_{1-\frac{\alpha}{2}}(x)$ using our training set $\mathcal{D}_{1}$.
 
 2. Once we have trained the models to output two estimated quantiles, we define the score function to be:
 
@@ -551,7 +553,7 @@ sorted_data
 plt.scatter(sorted_data['Drug'], sorted_data['Response'], label='Data points', alpha = 0.75)
 plt.plot(sorted_data['Drug'], sorted_data['0.05'], label=f'Q({int(5)}%)')
 plt.plot(sorted_data['Drug'], sorted_data['0.95'], label=f'Q({int(95)}%)')
-plt.xlabel('Druge Dosage')
+plt.xlabel('Drug Dosage')
 plt.ylabel('Biological Response')
 plt.title('Non-linear Quantile Regression')
 plt.legend()
@@ -712,7 +714,7 @@ plt.plot(sorted_data['Drug'],
 conformalized_05, label=f'Q({int(5)}%)')
 plt.plot(sorted_data['Drug'], 
 conformalized_95, label=f'Q({int(95)}%)')
-plt.xlabel('Druge Dosage')
+plt.xlabel('Drug Dosage')
 plt.ylabel('Biological Response')
 plt.title('Non-linear Quantile Regression')
 plt.legend()
@@ -735,7 +737,7 @@ plt.plot(sorted_data['Drug'],
 conformalized_05, label= 'Conformalized', color = 'blue')
 plt.plot(sorted_data['Drug'], 
 conformalized_95, color = 'blue')
-plt.xlabel('Druge Dosage')
+plt.xlabel('Drug Dosage')
 plt.ylabel('Biological Response')
 plt.title('Conformalized vs Unconformalized Quantiles')
 plt.legend()
