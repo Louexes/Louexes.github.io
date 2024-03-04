@@ -199,7 +199,9 @@ $$L(\beta) = \sum_{y_{i}>x_{i}\beta} \tau |y_{i} - x_{i}\beta | + \sum_{y_{i}\le
 This loss function ensures a robustness to outliers in response measurements as it does not penalize deviations as heavily as the squared loss used by OLS. We now begin the process. This is a form of the so called Pinball Loss function and is common in many neural network architectures.
 
 
-1. Identify heuristic notion of uncertainty and train model on training set $\mathcal{D}_{1}$. With quantile regression our uncertainty is estimating the true quantile $t_{\gamma}(x)$ using estimates $\hat{t}_{\gamma}(x)$ which are often found to be inaccurate due to noise or over/under- regularization in finite samples.  By applying conformal calibration we take this heuristic notion of uncertainty and turn it into a formal and more precise notion of uncertainty. Say we want to achieve a $1-\alpha$ coverage of the data, our selected error rate would be $\alpha$.  We  would want to fit two models for the quantiles $\hat{t}_{\frac{\alpha}{2}}(x)$ and $\hat{t}_{1-\frac{\alpha}{2}}(x)$ using our training set $\mathcal{D}_{1}$.
+1. Identify heuristic notion of uncertainty and train model on training set $\mathcal{D}_{1}$. 
+
+With quantile regression our uncertainty is estimating the true quantile $t_{\gamma}(x)$ using estimates $\hat{t}_{\gamma}(x)$ which are often found to be inaccurate due to noise or over/under- regularization in finite samples.  By applying conformal calibration we take this heuristic notion of uncertainty and turn it into a formal and more precise notion of uncertainty. Say we want to achieve a $1-\alpha$ coverage of the data, our selected error rate would be $\alpha$.  We  would want to fit two models for the quantiles $\hat{t}_{\frac{\alpha}{2}}(x)$ and $\hat{t}_{1-\frac{\alpha}{2}}(x)$ using our training set $\mathcal{D}_{1}$.
 
 2. Once we have trained the models to output two estimated quantiles, we define the score function to be:
 
@@ -743,7 +745,7 @@ plt.show()
 
 
     
-![png](/images/output_39_0.png)
+![png](/images/output_39_0%2021.24.45.png)
     
 
 
