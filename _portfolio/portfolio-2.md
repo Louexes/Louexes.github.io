@@ -3,9 +3,6 @@ title: "Distribution Free Uncertainty Quantification: Conformalized Quantile Reg
 collection: portfolio
 ---
 
-### Distributrion Free Uncertainty Quantification: Conformal Prediction with Applications to Quantile Regression
-
-
 Using ideas from 
 
 A. N. Angelopoulos and S. Bates. Conformal Prediction: A Gentle Introduction.
@@ -16,7 +13,6 @@ Information Processing Systems, vol. 32, 2019, pp. 3543–3553.
 
 R. Koenker and G. Bassett Jr, “Regression quantiles,” Econometrica: Journal of the Econometric
 Society, vol. 46, no. 1, pp. 33–50, 1978.
-
 
 
 ### Introduction
@@ -51,7 +47,7 @@ Mathematically the $(1-\alpha )$ quantile of a list of real numbers say $s_{1},.
 
 $$\inf\big\{q\in\mathbb{R}:\frac{1}{B}\sum_{b=1}^B \mathbb{1}_{\{s_b\leq q\}}\geq 1-\alpha\big\}$$
 
-where $\mathbb{1}_{\{s_b\leq q\}}$ is an indicator function that is 1 when the value $s_{B}$ is below the quantile value $q$.
+where $\mathbb{1}_{ \{ s_b \leq q \} }$ is an indicator function that is 1 when the value $s_{B}$ is below the quantile value $q$.
 
 Why revisit quantiles? We will using them as the building block for our prediction band $\hat{C}_{n}$ for Conformal Prediction.
 
@@ -65,7 +61,7 @@ $$\text{P}(y_{n+1} \leq \hat{q}) \geq 1 - \alpha$$
 Now how can we select the value of the quantile $\hat{q}$ such that the above equation holds?
 Well, we may impose that the sample $y_{1},...,y_{n}$ is i.i.d. This allows us to apply our knowledge of sample statistics to find an appropriate value of $\hat{q}$.
 
-Given the i.i.d assumption, the rank of $y_{n+1}$ is uniformly distirbuted over the values of $y_{1},...,y_{n+1}$. Informally this means:
+Given the i.i.d assumption, the rank of $y_{n+1}$ is uniformly distributed over the values of $y_{1},...,y_{n+1}$. Informally this means:
 
 $$\text{Prob}\big(y_{n+1} \text{ is among} \lceil (1-\alpha)(n+1)\rceil \text{ smallest of } y_1,\ldots, y_{n+1}\big)\geq 1-\alpha$$
 
@@ -201,9 +197,7 @@ $$L(\beta) = \sum_{y_{i}>x_{i}\beta} \tau |y_{i} - x_{i}\beta | + \sum_{y_{i}\le
 This loss function ensures a robustness to outliers in response measurements as it does not penalize deviations as heavily as the squared loss used by OLS. We now begin the process. This is a form of the so called Pinball Loss function and is common in many neural network architectures.
 
 
-1. Identify heuristic notion of uncertainty and train model on training set $\mathcal{D}_{1}$.
- With quantile regression our uncertainty is estimating the true quantile $t_{\gamma}(x)$ using estimates $\hat{t}_{\gamma}(x)$ which are often found to be inaccurate due to noise or over/under- regularization in finite samples.  By applying conformal calibration we take this heuristic notion of uncertainty and turn it into a formal and more precise notion of uncertainty.
-Say we want to achieve a $1-\alpha$ coverage of the data, our selected error rate would be $\alpha$.  We  would want to fit two models for the quantiles $\hat{t}_{\frac{\alpha}{2}}(x)$ and $\hat{t}_{1-\frac{\alpha}{2}}(x)$ using our training set  $\mathcal{D}_{1}$.
+1. Identify heuristic notion of uncertainty and train model on training set $\mathcal{D}_{1}$. With quantile regression our uncertainty is estimating the true quantile $t_{\gamma}(x)$ using estimates $\hat{t}_{\gamma}(x)$ which are often found to be inaccurate due to noise or over/under- regularization in finite samples.  By applying conformal calibration we take this heuristic notion of uncertainty and turn it into a formal and more precise notion of uncertainty. Say we want to achieve a $1-\alpha$ coverage of the data, our selected error rate would be $\alpha$.  We  would want to fit two models for the quantiles $\hat{t}_{\frac{\alpha}{2}}(x)$ and $\hat{t}_{1-\frac{\alpha}{2}}(x)$ using our training set $\mathcal{D}_{1}$.
 
 2. Once we have trained the models to output two estimated quantiles, we define the score function to be:
 
@@ -269,7 +263,7 @@ plt.show()
 
 
     
-![png](output_29_0.png)
+![png](output_28_0.png)
     
 
 
@@ -563,7 +557,7 @@ plt.show()
 
 
     
-![png](output_35_0.png)
+![png](output_34_0.png)
     
 
 
@@ -724,7 +718,7 @@ plt.show()
 
 
     
-![png](output_39_0.png)
+![png](output_38_0.png)
     
 
 
@@ -747,7 +741,7 @@ plt.show()
 
 
     
-![png](output_40_0.png)
+![png](output_39_0.png)
     
 
 
@@ -777,7 +771,7 @@ plt.show()
 
 
     
-![png](output_45_0.png)
+![png](output_44_0.png)
     
 
 
@@ -835,7 +829,7 @@ plt.hist(coverages) # should be roughly centered at 1-alpha
 
 
     
-![png](output_48_1.png)
+![png](output_47_1.png)
     
 
 
