@@ -203,7 +203,7 @@ With quantile regression our uncertainty is estimating the true quantile $t_{\ga
 
 By applying conformal calibration we take this heuristic notion of uncertainty and turn it into a formal and more precise notion of uncertainty. Say we want to achieve a $1-\alpha$ coverage of the data, our selected error rate would be $\alpha$.  
 
-We  would want to fit two models for the quantiles $\hat{t}_{\frac{\alpha}{2}}(x)$ and $\hat{t}_{1-\frac{\alpha}{2}}(x)$ using our training set $\mathcal{D}_{1}$.
+We would want to fit two models for the quantiles $\hat{t}_{\frac{\alpha}{2}}(x)$ and $\hat{t}_{1-\frac{\alpha}{2}}(x)$ using our training set $\mathcal{D}_{1}$.
 
 2. Once we have trained the models to output two estimated quantiles, we define the score function to be:
 
@@ -221,16 +221,15 @@ $$\hat{q}=\text{quantile}\big(s_1,\ldots,s_{n_2};\frac{\lceil (1-\alpha)(n_2+1)\
 
 $$\hat{C}\big(x_{\text{cal}}\big)= [\hat{t}_{\frac{\alpha}{2}}(x) - \hat{q}, \hat{t}_{1-\frac{\alpha}{2}}(x) + \hat{q}]$$
 
-Intuitively, the set $\hat{C}\big(x_{\text{cal}}\big)$ just grows our shirkns the distance bewteen the quantiles by $\hat{q}$ to achieve coverage.
+Intuitively, the set $\hat{C}\big(x_{\text{cal}}\big)$ just grows or shrinks the distance bewteen the quantiles by $\hat{q}$ to achieve coverage.
 
 
 ### Putting Things Into Practice: Testing a new medicine
 <hr style="border:2px solid gray">
 
-Suppose we have data on the clinical trials evluating the dosage for a new type of medication. What is often the case when looking at optimal dosaging for medication is that the data follows a sigmoidal shop, where there is initially an increase in the biological response of the patient, with the effect plateuing at high dosages. This of course is not generalisable to all types of medication, but is very common nontheless. Given the health implications of medications it is important to determine how different people respond to the medication at different dosages. We apply quantile regression to get an idea of what the 1- alpha highest responses are and what the alpha lowest responses are. This will serve as an important health guidline to determine optimal dosaging. This type of data often exhibits heteroskedasticity due to the complexity of testing medication in people of different weights, gender and genetics. These all play large factors in the effect that the medication has on a patient, hence being able to quantify the uncertainty of different potential reactions to the medication is crucial to ensuring patient health. 
+Suppose we have data on the clinical trials evaluating the dosage for a new type of medication. What is often the case when looking at optimal dosage for medication is that the data follows a sigmoidal shape, where there is an initial increase in the biological response of the patient, with the effect eventually plateuing at higher dosages. This of course is not generalisable to all types of medication, but is very common nontheless. Given the health implications of medications it is important to determine how different people respond to the medication at different dosages. We apply quantile regression to get the lower alpha/2 quantile and the upper 1 - alpha/2 quantile. This will serve as an important health guidline to determine optimal dosaging and recognize potentially extreme responses. This type of data often exhibits heteroskedasticity due to the complexity of testing medication in people of different weights, genders and genetics. These all play large factors in the effect that the medication has on a patient, hence being able to quantify the uncertainty of different potential reactions to the medication is crucial to ensuring patient health. 
 
-Quantile regression works well here due to the heteroskedasticity of the data, meaning the variance is non constant across the predictors. This means that uncertainty will change throughout the data set, making conformal prediction particularly useful in quantifying that.
-
+Quantile regression works well here due to the heteroskedasticity of the data, meaning the variance is non constant across the predictors. This means that uncertainty will change throughout the data set, making conformal prediction particularly useful in accounting for that.
 
 ```python
 from sklearn.datasets import make_regression
