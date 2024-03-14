@@ -819,6 +819,9 @@ for r in range(R):
 
 average_coverage = coverages.mean() # should be close to 1-alpha 
 plt.hist(coverages) # should be roughly centered at 1-alpha
+plt.title("Frequency Histogram of Coverage")
+plt.xlabel("Coverage")
+plt.ylabel("Frequency")
 ```
 
 
