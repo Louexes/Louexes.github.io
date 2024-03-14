@@ -81,10 +81,10 @@ analytics:
 # Site Author
 author:
   name             : "Louis Gehringer"
-  avatar           : "profilepic.png"
+  avatar           : "profilepic.jpeg"
   bio              : "Passionate about Machine Learning and Econometrics"
   location         : "Amsterdam, Netherlands"
-  employer         :
+  employer         : "University of Amsterdam Google Developer Student Club"
   pubmed           : 
   googlescholar    : 
   email            :
