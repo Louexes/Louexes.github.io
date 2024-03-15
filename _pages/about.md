@@ -12,9 +12,9 @@ redirect_from:
 
 👨🏻‍💻 I am currently a final year student in Econometrics and Data Science at the University of Amsterdam
 
-🤖 My interests lie in the intersection of Statistics, Econometrics and Machine Learning.
+🤖 My interests lie in applying Machine Learning and Econonmetrics to solve real world problems.
 
-👨🏻‍🔧 In my youth I competed in tennis tournaments in the UAE, eventually progressing to working as a part-time coach during my final years of high school. During my time at university I have taken on a position as an Academic Tutor and most recently the Event Lead role at the UvA Google Student Developer Club. 
+👨🏻‍🔧 In my youth I competed in tennis tournaments in the UAE, eventually progressing to working as a part-time coach during my final years of high school. During my time at university I have taken on a position as an Academic Tutor and recently the Event Lead role at the UvA Google Student Developer Club. 
 
 # Selected Experience 
 
@@ -24,11 +24,11 @@ I have experience as an Academic Tutor for the Amsterdam based tutoring company 
 
 More recently I worked in a team with three other students as a Data Analyst for Dutch NGO [paxvorvreede](https://paxvoorvrede.nl/) through the Analytics Academy program at our university. As a non-profit organization paxvorvreede is dependent on donations and has limited financial capacities. Our job was to optimize their website traffic and use the collected data to provide insightful visualizations on things such as donation data and google ads data. The program also consisted of an educational part, such as a Python bootcamp which focused on preprocessing data for Machine Learning hosted by [Amsterdam Data Collective](https://amsterdamdatacollective.com/).
 
-## 📊 Personal Projects / Reproducing Papers
+## 📊 Personal Projects
 
-I have experience with independent research, most recently looking at developments in Uncertainty Quantifcation. I implemented some ideas from Angelopoulous & Bates (2023) surrounding Conformal Prediction. I applied it to quantile regression, which is a popular regression method in Econometrics. This was to show the usefulness and universality of Conformal Prediction and its potential when applied to real world data.
+I have experience conducting independent research, most recently looking at developments in Uncertainty Quantifcation. I implemented some ideas from Angelopoulous & Bates (2023) surrounding Conformal Prediction. I applied it to quantile regression, in order to quantify the uncertainty present in estimating lower and upper quantiles of drug response data. This was to show the usefulness and universality of Conformal Prediction in achieving a desired coverage regardless of the underlying data generating process.
 
-Another project is a Deep Learning project where I used data from OpenWeather to access historical weather data such as temperature, humidity, pressure and wind speed to train a Long short-term memory (LSTM) model. This is to create an accurate way to predict weather, capturing both short term and long term trends while also dealing with the vanishing gradient problem inherent to recurrent neural networks (RNN).
+I am currently working on a Deep Learning project where I use data from OpenWeather to access historical weather data such as temperature, humidity, pressure and wind speed to train a Long short-term memory (LSTM) model. This is to create an accurate way to predict weather, capturing both short term and long term trends while also dealing with the vanishing gradient problem inherent to recurrent neural networks (RNN).
 
 
 
