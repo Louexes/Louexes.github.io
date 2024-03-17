@@ -1,7 +1,7 @@
 ---
 title: "Predicting Weather Patterns with LSTM Time Series Model"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+excerpt: "Application of LSTM model to capture short and long term weather trends for the Amsterdam region."
 collection: portfolio
 ---
 
-This is an item in your portfolio. It can be have images or nice text. If you name the file .md, it will be parsed as markdown. If you name the file .html, it will be parsed as HTML. 
+Coming soon.
