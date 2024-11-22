@@ -1,5 +1,5 @@
 ---
-title: "Distribution Free Uncertainty Quantification: Conformalized Quantile Regression"
+title: "Distribution Free Uncertainty Quantification: Conformalized Quantile Regression."
 excerpt: "Introduction to Conformal Prediction and its applications in Machine Learning<br/><img src='/images/output_39_0.png'>"
 collection: portfolio
 ---
