@@ -18,9 +18,9 @@ The Taxi problem can be described as follows:
 +---------+
 ```
 There are four designated locations in the grid world indicated by R(ed), G(reen), Y(ellow), and B(lue). When the episode starts, the taxi starts off at a random square and the passenger is at a random location. The taxi drives to the passenger's location, picks up the passenger, drives to the passenger's destination (another one of the four specified locations), and then drops off the passenger. Once the passenger is dropped off, the episode ends. The rewards are:
-	•	-1 per step unless other reward is triggered.
-	•	+20 delivering passenger.
-	•	-10 executing "pickup" and "drop-off" actions illegally.
+    - -1 per step unless other reward is triggered.
+    - +20 for delivering the passenger.
+    - -10 for executing "pickup" and "drop-off" actions illegally.
 If a navigation action would cause the taxi to hit a wall (solid borders in the map), the action is a no-op, and there is only the usual reward of −1.
 
 
@@ -41,8 +41,8 @@ Then, we reset the environment:
 ```python
 np.random.seed(100)
 env.reset()
-```
 Out: (2, 3, 2, 1)
+```
 
 
 It returns four state variables:
@@ -55,9 +55,10 @@ We can use the describe_state method of the Taxi instance to display the state v
 
 ```python
 env.describe_state()
-```
+
 
 Out: {'Taxi Location': [2, 3], 'Passenger Location': 'Y', 'Destination Index': 'G'}
+```
 
 
 There are 6 discrete deterministic actions:
@@ -71,20 +72,18 @@ There are 6 discrete deterministic actions:
 
 ```python
 print(env.action_space)
-['South', 'North', 'East', 'West', 'Pickup', 'Dropoff']
+Out: ['South', 'North', 'East', 'West', 'Pickup', 'Dropoff']
+
 env.locs
-```
-
 Out: [(0, 0), (0, 4), (4, 0), (4, 3)]
-
+```
 
 Let us move one step to west:
 
 ```python
 env.step('West')
-```
 Out: ((2, 2, 2, 1), -1, False)
-
+```
 
 The output is a 3-tuple: the new state (a list of 4 numbers), reward, and whether the episode is ended.
 
@@ -103,9 +102,10 @@ env.render()
 ```
 
 We begin by generating one episode for the taxi driver who:
-    - Picks up the passenger when the taxi is at the location of the passenger and they are not yet at the destination.
-    - Drops off the passenger in the taxi when reaching the destination.
-    - Moves randomly with equal probabilities when finding the passenger or when the passenger is in the taxi (but not yet arriving at the destination).
+
+- Picks up the passenger when the taxi is at the location of the passenger and they are not yet at the destination.
+- Drops off the passenger in the taxi when reaching the destination.
+- Moves randomly with equal probabilities when finding the passenger or when the passenger is in the taxi (but not yet arriving at the destination).
 
 
 First initialize the policy as a dictionary pi_naive. Assigning the actions 'Pickup' and 'Dropoff' to the corresponding states.
@@ -135,10 +135,10 @@ env.render()
 | | : | : |
 |Y| : |B: |
 +---------+
-print(env.describe_state())
-```
-Out: {'Taxi Location': [2, 3], 'Passenger Location': 'Y', 'Destination Index': 'B'}
 
+print(env.describe_state())
+Out: {'Taxi Location': [2, 3], 'Passenger Location': 'Y', 'Destination Index': 'B'}
+```
 
 Now, it’s time to import the simulate_episode function from env_taxi.py to help you simulate episode(s). We don't need to worry about coding the random moves: this function will generate a random move if the state is not provided in the policy dictionary.
 
