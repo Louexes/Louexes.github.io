@@ -8,6 +8,7 @@ collection: portfolio
 <hr style="border:2px solid gray">
 
 The Taxi problem can be described as follows:
+```python
         +---------+
         |R: | : :G|
         | : | : : |
@@ -15,6 +16,7 @@ The Taxi problem can be described as follows:
         | | : | : |
         |Y| : |B: |
         +---------+
+```
 There are four designated locations in the grid world indicated by R(ed), G(reen), Y(ellow), and B(lue). When the episode starts, the taxi starts off at a random square and the passenger is at a random location. The taxi drives to the passenger's location, picks up the passenger, drives to the passenger's destination (another one of the four specified locations), and then drops off the passenger. Once the passenger is dropped off, the episode ends. The rewards are:
 	•	-1 per step unless other reward is triggered.
 	•	+20 delivering passenger.
