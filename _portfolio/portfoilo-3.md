@@ -1,8 +1,9 @@
 ---
 title: "Solving the Taxi Problem using Reinforcement Learning techniques."
-excerpt: "Applying SARSA, Q-Learning and off-policy monte carlo method to solve the Taxi Problem."
+excerpt: "Applying SARSA, Q-Learning and off-policy monte carlo method to solve the Taxi Problem.<br/><img src='/images/Taxi.png'>"
 collection: portfolio
 ---
+
 
 ### The Taxi Problem
 <hr style="border:2px solid gray">
