@@ -9,13 +9,13 @@ collection: portfolio
 
 The Taxi problem can be described as follows:
 ```python
-        +---------+
-        |R: | : :G|
-        | : | : : |
-        | : : : : |
-        | | : | : |
-        |Y| : |B: |
-        +---------+
++---------+
+|R: | : :G|
+| : | : : |
+| : : : : |
+| | : | : |
+|Y| : |B: |
++---------+
 ```
 There are four designated locations in the grid world indicated by R(ed), G(reen), Y(ellow), and B(lue). When the episode starts, the taxi starts off at a random square and the passenger is at a random location. The taxi drives to the passenger's location, picks up the passenger, drives to the passenger's destination (another one of the four specified locations), and then drops off the passenger. Once the passenger is dropped off, the episode ends. The rewards are:
 	•	-1 per step unless other reward is triggered.
@@ -42,44 +42,31 @@ Then, we reset the environment:
 np.random.seed(100)
 env.reset()
 ```
-(2, 3, 2, 1)
+Out: (2, 3, 2, 1)
 
 
 It returns four state variables:
-	•	Row index of the taxi (starting from 0 in Python)
-	•	Column index of the taxi (starting from 0 in Python)
-	•	Passenger location (0-4): 0=R, 1=G, 2=Y, 3=B, 4=in taxi
-	•	Destination location (0-3): same encoding rule as that for passenger location but excluding the "in taxi" option.
+- Row index of the taxi (starting from 0 in Python)
+- Column index of the taxi (starting from 0 in Python)
+- Passenger location (0-4): 0=R, 1=G, 2=Y, 3=B, 4=in taxi
+- Destination location (0-3): same encoding rule as that for passenger location but excluding the "in taxi" option.
 
 We can use the describe_state method of the Taxi instance to display the state variables without location encoding.
 
 ```python
 env.describe_state()
 ```
-{'Taxi Location': [2, 3], 'Passenger Location': 'Y', 'Destination Index': 'G'}
 
-
-We can use the render method to visualize the state.
-
-```python
-env.render()
-```
-+---------+
-|R: | : :G|
-| : | : : |
-| : : : : |
-| | : | : |
-|Y| : |B: |
-+---------+
+Out: {'Taxi Location': [2, 3], 'Passenger Location': 'Y', 'Destination Index': 'G'}
 
 
 There are 6 discrete deterministic actions:
-	•	'South': move south
-	•	'West': move north
-	•	'East': move east
-	•	'West': move west
-	•	'Pickup': pickup passenger
-	•	'Dropoff': drop off passenger
+- 'South': move south
+- 'North': move north
+- 'East': move east
+- 'West': move west
+- 'Pickup': pick up passenger
+- 'Dropoff': drop off passenger
 
 
 ```python
@@ -87,7 +74,8 @@ print(env.action_space)
 ['South', 'North', 'East', 'West', 'Pickup', 'Dropoff']
 env.locs
 ```
-[(0, 0), (0, 4), (4, 0), (4, 3)]
+
+Out: [(0, 0), (0, 4), (4, 0), (4, 3)]
 
 
 Let us move one step to west:
@@ -95,7 +83,7 @@ Let us move one step to west:
 ```python
 env.step('West')
 ```
-((2, 2, 2, 1), -1, False)
+Out: ((2, 2, 2, 1), -1, False)
 
 
 The output is a 3-tuple: the new state (a list of 4 numbers), reward, and whether the episode is ended.
@@ -115,12 +103,12 @@ env.render()
 ```
 
 We begin by generating one episode for the taxi driver who:
-	•	Picks up the passenger when the taxi is at the location of the passenger when they are not yet at the destination;
-	•	Drops off the passenger in the taxi when reaching the destination;
-	•	Moves randomly with equal probabilities when finding the passenger or when the passenger is in the taxi (but not yet arriving at destination).
+    - Picks up the passenger when the taxi is at the location of the passenger and they are not yet at the destination.
+    - Drops off the passenger in the taxi when reaching the destination.
+    - Moves randomly with equal probabilities when finding the passenger or when the passenger is in the taxi (but not yet arriving at the destination).
 
 
-First initialize the policy as a dictionary pi_naive . Assigning the actions 'Pickup' and 'Dropoff' to the corresponding states.
+First initialize the policy as a dictionary pi_naive. Assigning the actions 'Pickup' and 'Dropoff' to the corresponding states.
 
 ```python
 pi_naive= defaultdict(lambda: np.random.choice(env.action_space))
@@ -140,8 +128,6 @@ Reset the environment.
 ```python
 state=env.reset(271)
 env.render()
-print(env.describe_state())
-```
 +---------+
 |R: | : :G|
 | : | : : |
@@ -149,8 +135,9 @@ print(env.describe_state())
 | | : | : |
 |Y| : |B: |
 +---------+
-
-{'Taxi Location': [2, 3], 'Passenger Location': 'Y', 'Destination Index': 'B'}
+print(env.describe_state())
+```
+Out: {'Taxi Location': [2, 3], 'Passenger Location': 'Y', 'Destination Index': 'B'}
 
 
 Now, it’s time to import the simulate_episode function from env_taxi.py to help you simulate episode(s). We don't need to worry about coding the random moves: this function will generate a random move if the state is not provided in the policy dictionary.
@@ -257,7 +244,9 @@ pi_qlearning_2.update(pi_naive)
 ```
 
 
-# Compare their performance in 10000 new episodes
+Compare their performance in 10000 new episodes
+
+```python
 from env_taxi import performance_evaluation
 print('--------  Q-learning, alpha=0.4  --------')
 performance_evaluation(env,pi_qlearning_1)
@@ -271,7 +260,7 @@ The percentage of episodes that cannot terminate within 1000 steps: 0.0
 100%|██████████| 10000/10000 [00:04<00:00, 2163.29it/s]
 The sum of rewards per episode: 7.8886
 The percentage of episodes that cannot terminate within 1000 steps: 0.0
-
+```
 
 We would expect Q-Learning to perform well on the Taxi Problem given that it is equipped to handle larger state-action spaces via incremental updates to the action-value function. More so, it uses bootstrapping and updating based on the current estimates, meaning it can learn from partial episodes and improve action-value estimates progressively. This is beneficial for the taxi problem with its long episodes and sparse rewards. We observe that for both learning rates, the performance is the same and good. A higher learning rate means the algorithm adapts faster to new information, whereas a lower rate is more stable. In our case, performance is identical, showing that there is little sensitivity to the learning rate in this problem when using Q-Learning.
 
@@ -333,7 +322,6 @@ for key, actions in Q2.items():
     best_action = max(actions, key=actions.get)
     pi_sarsa_2_greedy[key] = best_action
 
-# End Coding Here
 
 # Merge them with the naive policy: make sure to pick up and drop off passengers correctly.
 
@@ -346,7 +334,6 @@ Now generate the $\varepsilon$-greedy policies with $\varepsilon=0.1$ for differ
 ```python
 # The epsilon-greedy policies shall be stored as Python functions.
 
-# Start Coding Here
 
 # Save the policy for alpha=0.4 as a Python dictionary/defaultdic object pi_sarsa_1
 pi_sarsa_1= defaultdict(lambda: np.random.choice(env.action_space))
@@ -391,8 +378,6 @@ performance_evaluation(env,pi_sarsa_1)
 print('--------  Sarsa, alpha=0.1  --------')
 performance_evaluation(env,pi_sarsa_2)
 
-```
-
 --------  Sarsa, alpha=0.4  --------
 100%|██████████| 10000/10000 [00:19<00:00, 525.36it/s]
 The sum of rewards per episode: -1.5143
@@ -402,6 +387,7 @@ The percentage of episodes that cannot terminate within 1000 steps: 0.0
 The sum of rewards per episode: 2.3632
 The percentage of episodes that cannot terminate within 1000 steps: 0.0
 
+```
 
 SARSA is similar to Q-Learning, but differs in that it is an on-policy algorithm that updates the action-value function using the reward of the next state-action pair according to the current policy. Q-Learning on the other hand is an off-policy algorithm that updates using the maximum possible reward of the next state, independent of the policy followed. This makes Q-Learning more aggressive as it focuses on the best possible action in each state. SARSA is more conservative because it updates the action-value function based on the actual actions taken, which include exploratory moves. This may explain why the sum of rewards per episode for SARSA is lower in this case. The more aggressive exploitation of rewards of Q-Learning makes it yield a higher sum of rewards per episode. We also observe that the sum of rewards per episode were higher for alpha = 0.1. This indicates that the SARSA algorithm is more sensitive to changes in the learning rate for the taxi problem. Similar arguments hold here as for Q-Learning. The lower learning rate is better in this scenario as it results in more stable and incremental updates to the action-value function. This makes it better suited for the large state-action space and sparse rewards. Whereas Q-Learning may get away with a larger learning rate due to updating according to the maximum reward of the next state, SARSA does not do this such that a higher learning rate has a more negative impact on the sum of rewards than it did for Q-Learning.
 
@@ -446,11 +432,12 @@ pi_wis.update(pi_naive)
 ```
 
 Let us evaluate its performance:
+```python
 performance_evaluation(env,pi_wis)
 100%|██████████| 10000/10000 [00:05<00:00, 1891.62it/s]
 The sum of rewards per episode: 7.3223
 The percentage of episodes that cannot terminate within 1000 steps: 0.0
-
+```
 
 The conclusion is that Q-Learning is best suited for the taxi problem, given that it yielded the highest sum of rewards per episode and converged quickly. This can likely be attributed to the more aggressive approach of updating using the maximum possible reward of the next step, irrespective of the policy followed. A possible issue with Q-Learning may be the overestimation bias, which leads to less accurate value estimates. However this was fortunately unlikely to be the case in this scenario. Off-policy Monte Carlo control with weighted importance sampling also performed well. This is likely due to its ability to be data efficient and more accurate due to unbiased value estimates. It also performed well for the taxi problem given the structured environment of the problem overall. A disadvantage is its complexity relative to the other two methods as it needs to manage the importance sampling ratios. SARSA yielded the comparatively worst performance, likely due to its overly conservative approach in updating. Generally speaking, the conservative updating is beneficial as it leads to more stable learning and convergence. However in this case, it was triumphed by the aggression of Q-Learning and data efficiency of MC control with weighted importance sampling.
 
