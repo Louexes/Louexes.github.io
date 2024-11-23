@@ -1,6 +1,6 @@
 ---
 title: "Solving the Taxi Problem using Reinforcement Learning techniques."
-excerpt: "Applying SARSA, Q-Learning and off-policy monte carlo method to solve the Taxi Problem.>"
+excerpt: "Applying SARSA, Q-Learning and off-policy monte carlo method to solve the Taxi Problem."
 collection: portfolio
 ---
 
@@ -55,8 +55,6 @@ We can use the describe_state method of the Taxi instance to display the state v
 
 ```python
 env.describe_state()
-
-
 Out: {'Taxi Location': [2, 3], 'Passenger Location': 'Y', 'Destination Index': 'G'}
 ```
 
